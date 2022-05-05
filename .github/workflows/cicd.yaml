@@ -21,7 +21,7 @@ jobs:
     needs: build-and-push
     steps:
     - name: deploy to cluster
-      uses: steebchen/kubectl@main
+      uses: steebchen/kubectl@master
       env:
         KUBE_CONFIG_DATA: ${{ secrets.KUBE_CONFIG_DATA }}
       with:

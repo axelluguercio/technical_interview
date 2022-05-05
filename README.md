@@ -1,8 +1,8 @@
 <img src="" width="250" height="250">
 
-#### Introducción
+# Introducción
 
-Solucion de la prueba tecninca para Craftech.io
+Solucion de la prueba tecninca para Craftech.io.
 
 
 

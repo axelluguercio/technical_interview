@@ -1,0 +1,38 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: django-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      component: django
+  template:
+    metadata:
+      labels:
+        component: django
+    spec:
+      containers:
+        - name: django-container
+          image: aluguercio/django-backend:1.2
+          ports:
+            - containerPort: 8000
+          command: ["sh", "-c"]
+          args: ["./entrypoint.sh && gunicorn backend.wsgi:application --bind 0.0.0.0:8000"]
+          envFrom:
+          - configMapRef:
+              name: django-variables
+          - secretRef:
+              name: django-secrets
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: django-service
+spec:
+  selector:
+    component: django
+  ports:
+  - protocol: TCP
+    port: 8000
+    targetPort: 8000

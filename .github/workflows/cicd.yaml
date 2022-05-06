@@ -24,4 +24,4 @@ jobs:
         uses: docker/build-push-action@v3
         with:
           push: true
-          tags: 'usr/app:latest'
+          tags: 'aluguercio/nginx-ci:latest'

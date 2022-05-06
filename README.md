@@ -6,28 +6,42 @@ Solucion de la prueba tecnica para Craftech.io.
 
 ## Prueba 1
 
-![Prueba 1 chart de ejemplo](https://raw.githubusercontent.com/axelluguercio/technical_interview/main/arquitecture.png)
+![Prueba 1 diagrama de red](https://raw.githubusercontent.com/axelluguercio/technical_interview/main/prueba1/chart.jpeg)
 
-El chart muestra un kluster de kubernetes GKE ofrecido por GCP para lo que es entre IaaS e IaaP.
-GKE se va a encargar de que el cluster sea de alta dispinibilidad. Nos preocupamos por provicionar los deployment y objetos de kubernetes necesarios para levantar nuestra aplicación.
+El diagrama de red muestra una arquitectura de cargas variable y alta disponibilidad en GCP.
 
-### Ingress controller
+### External Cloud Load balancer
 
-Para acceder a nuestra applicación desde internet, proporcionamos un objeto ingress para hacer un proxy pass desde el puerto http/https al puerto donde esta escuchando cada servicio de nuestra app.
+Recurso encargado de balancear la carga de trafico que recibe la applicación.
 
-### Frontend js
+### Cloud NAT
 
-El ingress controller va a redireccionar el trafico hacia el servicio de frontend, el frontend va a empezar a renderizar los template cargados de los apropiados servicios de base de datos. Cada POD se va a comunicar con el otro mediante su correspondiente servicio.
+Provee el acceso a internet desde dentro de los VPC, para las 2 bases de datos que van a consumir un microsevicio externo a la red virtual privada, en este caso Cloud Datastore y Cloud SQL.
 
-### Backend MongoDB
+### VPC
 
-Proporciona base de datos no relacional. Las credenciales se almacena en el secret correspondiente.
+Para un alta disponibilidad tenemos 2 VPC en 2 Regiones diferentes, us-east1 y eu-west1 que provee un failover en caso de que el acceso a la Region no este disponible e viceversa.
 
-### Backend PostgresSQL
+### App engine
 
-Proporciona base de datos relacional. Usa configmap y los secrets para tomar las variables de entorno y credenciales.
+Proporcina soporte para el lenguaje de javascript, por lo que los desarrolladores solo se van a tener que preocupar por el codigo. La infreastructura y el autoscaling se encarga el motor de Google.
 
-Cada deployment va a tener su replicaSet, esto quiere decir que por ejemplo cuando haya mucha carga de trabajo en el POD A el deployment de frontend se va a encagar de aumentar su replicar para balancear adecuadamente la carga.
+
+### Cloud SQL
+
+Proporciona servicio para bases de datos relacionales y es facilmente escalable,
+
+### Cloud Datastore
+
+Proporcina servicio para base de datos no relacional.
+
+### Cloud Router
+
+Se va en cargar de la tabla de routeo para la comunicacion entre las 2 redes virtuales privadas.
+
+### Stackdriver
+
+Para monitorear las instancias.
 
 ## Prueba 2
 

@@ -36,7 +36,7 @@ jobs:
         env:
           KUBE_CONFIG_DATA: ${{ secrets.KUBE_CONFIG_DATA }}
         with:
-          args: set image --record deployment/nginx-deployment nginx=aluguercio/nginx-ci:lastest
+          args: set image --record deployment/nginx-deployment nginx=aluguercio/nginx-ci:latest
       - 
         name: verify deployment
         uses: steebchen/kubectl@master

@@ -59,35 +59,35 @@ cat ~/.kube/config
 
 ```
 
-Desplega el deployment de PostgreSQL 
+#### Desplega el deployment de PostgreSQL 
 
 ```
 kubectl apply -f k8s/postgresql/.
 
 ```
 
-Desplega el deployment de Django
+#### Desplega el deployment de Django
 
 ```
 kubectl apply -f k8s/django/.
 
 ```
 
-Desplega el deployment de reactjs
+#### Desplega el deployment de reactjs
 
 ```
 kubectl apply -f k8s/reactjs/.
 
 ```
 
-Crear el ingress controller para el proxy pass
+#### Crear el ingress controller para el proxy pass
 
 ```
 kubectl apply -f 00-ingress-controlle.yaml
 
 ```
 
-Verificar que los deployment y los Pods esten corriendo
+#### Verificar que los deployment y los Pods esten corriendo
 
 ```
 kubectl get --all
@@ -143,7 +143,7 @@ cat ~/.kube/config | base64
 
 ```
 
-El cicd.yaml consta de 2 jobs:
+#### El cicd.yaml consta de 2 jobs:
 
 - El job docker lo que hace es que cada vez que hago un push a la rama main regenera la imagen de nginx y lo sube a mi repositorio de DOCKER_HUB.
 ```

@@ -12,36 +12,58 @@ El diagrama de red muestra una arquitectura de cargas variable y alta disponibil
 
 ### External Cloud Load balancer
 
+```
 Recurso encargado de balancear la carga de trafico que recibe la applicación.
+
+```
 
 ### Cloud NAT
 
+```
 Provee el acceso a internet desde dentro de los VPC, para las 2 bases de datos que van a consumir un microsevicio externo a la red virtual privada, en este caso Cloud Datastore y Cloud SQL.
+
+```
 
 ### VPC
 
+```
 Para un alta disponibilidad tenemos 2 VPC en 2 Regiones diferentes, us-east1 y eu-west1 que provee un failover en caso de que el acceso a la Region no este disponible e viceversa.
+
+```
 
 ### App engine
 
+```
 Proporcina soporte para el lenguaje de javascript, por lo que los desarrolladores solo se van a tener que preocupar por el codigo. La infreastructura y el autoscaling se encarga el motor de Google.
 
-
+```
 ### Cloud SQL
 
+```
 Proporciona servicio para bases de datos relacionales y es facilmente escalable,
+
+```
 
 ### Cloud Datastore
 
+```
 Proporcina servicio para base de datos no relacional.
+
+```
 
 ### Cloud Router
 
+```
 Se va en cargar de la tabla de routeo para la comunicacion entre las 2 redes virtuales privadas.
+
+```
 
 ### Stackdriver
 
+```
 Para monitorear las instancias.
+
+```
 
 ## Prueba 2
 

@@ -1,4 +1,4 @@
-kind: Deployment
+kind: Deployment # deployment de nginx para cicd
 metadata:
   name: nginx-deployment
 spec:

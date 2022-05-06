@@ -14,10 +14,10 @@ spec:
     spec:
       containers:
         - name: react-container
-          image: aluguercio/react-frontend:1.2
+          image: aluguercio/react-frontend:1.2 # pull de la imagen desde mi docker hub
           ports:
             - containerPort: 3000  
-          command: ["sh", "-c", "serve -c 0.0.0.0:3000"] 
+          command: ["sh", "-c", "serve -c 0.0.0.0:3000"] # ejecuta el serve como entrypoint
 ---
 apiVersion: v1
 kind: Service

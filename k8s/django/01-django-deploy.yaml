@@ -14,18 +14,18 @@ spec:
     spec:
       containers:
         - name: django-container
-          image: aluguercio/django-backend:1.2
+          image: aluguercio/django-backend:1.2 # pull la imagen de mi docker hub
           ports:
             - containerPort: 8000
-          command: ["sh", "-c"]
+          command: ["sh", "-c"] # ejecuta dos comandos en shell sh y si el primero falla no ejecuta el segundo
           args: ["./entrypoint.sh && gunicorn backend.wsgi:application --bind 0.0.0.0:8000"]
-          envFrom:
+          envFrom: # get las variables y credenciales del configmap y secrets
           - configMapRef:
               name: django-variables
           - secretRef:
               name: django-secrets
 ---
-apiVersion: v1
+apiVersion: v1 # servicio de django
 kind: Service
 metadata:
   name: django-service

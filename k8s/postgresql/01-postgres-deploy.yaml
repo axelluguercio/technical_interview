@@ -23,7 +23,7 @@ spec:
             - containerPort: 5432
           volumeMounts:
             - name: postgres-data
-              mountPath: /var/lib/postgresql/data
+              mountPath: /var/lib/postgresql/data # monta el volume claim declarado en el subdirectorio
               subPath: postgresql
           env:
             - name: POSTGRES_PASSWORD

@@ -1,6 +1,6 @@
 on:
   push:
-    branches:
+    branches: # Cuando se pushea a rama main ejecuta la action
       - 'main'
 
 jobs:
@@ -8,13 +8,13 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       -
-        name: Set up QEMU
+        name: Set up QEMU # Setea la maquina virtual
         uses: docker/setup-qemu-action@v2
       -
-        name: Set up Docker Buildx
+        name: Set up Docker Buildx 
         uses: docker/setup-buildx-action@v2
       -
-        name: Login to DockerHub
+        name: Login to DockerHub # Login a Docker Hub usando los secrets 
         uses: docker/login-action@v2
         with:
           username: ${{ secrets.DOCKER_USERNAME }}
@@ -24,19 +24,19 @@ jobs:
         uses: docker/build-push-action@v3
         with:
           push: true
-          tags: 'aluguercio/nginx-ci:latest'
+          tags: 'aluguercio/nginx-ci:latest' # metadata latest para ultima version
   deploy-to-cluster:
     name: deploy to cluster
     runs-on: ubuntu-latest
-    needs: docker
+    needs: docker # solo si el job docker es successfull
     steps:
       - 
         name: deploy to cluster
         uses: steebchen/kubectl@master
         env:
-          KUBE_CONFIG_DATA: ${{ secrets.KUBE_CONFIG_DATA }}
+          KUBE_CONFIG_DATA: ${{ secrets.KUBE_CONFIG_DATA }} # el archivo de kubeconfig de kubectl en base64 para poder conectarse al cluster remoto
         with:
-          args: set image --record deployment/nginx-deployment nginx=aluguercio/nginx-ci:latest
+          args: set image --record deployment/nginx-deployment nginx=aluguercio/nginx-ci:latest # Cambia la imagen del container nginx deployado en el cluster por la nueva que se pusheo al repo
       - 
         name: verify deployment
         uses: steebchen/kubectl@master
@@ -44,4 +44,4 @@ jobs:
           KUBE_CONFIG_DATA: ${{ secrets.KUBE_CONFIG_DATA }}
           KUBECTL_VERSION: "1.20"
         with:
-          args: '"rollout status deployment/nginx-deployment"'
+          args: '"rollout status deployment/nginx-deployment"' # verifica que el deployment de nginx este corriendo

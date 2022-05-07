@@ -23,7 +23,7 @@ jobs:
         name: Build and push
         uses: docker/build-push-action@v3
         with:
-          context: prueba3/.
+          context: ./prueba3
           push: true
           tags: 'aluguercio/nginx-ci:latest' # metadata latest para ultima version
   deploy-to-cluster:

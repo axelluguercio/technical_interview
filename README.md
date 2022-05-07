@@ -16,13 +16,13 @@ El diagrama de red muestra una arquitectura de cargas variable y alta disponibil
 
 ### **VPC**
 
-- ***10.0.1.0/20*** -> **red** de la VPC.
+> ***10.0.1.0/20*** -> **red** de la VPC.
 
-- ***15*** -> **subredes diponibles**.
+> ***15*** -> **subredes diponibles**.
 
-- ***10.0.2.0/27 - 10.0.4.0/27*** -> para **subredes privadas** con 29 ip reservadas para cada una.
+> ***10.0.2.0/27 - 10.0.4.0/27*** -> para **subredes privadas** con 29 ip reservadas para cada una.
 
-- ***10.0.5.0/30 - 10.0.4.0/30*** -> para **subredes publicas** con 1 ip reservada para NAT gateway.
+> ***10.0.5.0/30 - 10.0.4.0/30*** -> para **subredes publicas** con 1 ip reservada para NAT gateway.
 
 ---
 

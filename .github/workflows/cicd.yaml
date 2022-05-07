@@ -21,9 +21,9 @@ jobs:
           password: ${{ secrets.DOCKER_TOKEN }}
       -
         name: Build and push
-        uses: docker/build-push-action@v3
+        uses: docker/build-push-action@v2
         with:
-          context: prueba3
+          file: ./prueba3/Dockerfile
           push: true
           tags: 'aluguercio/nginx-ci:latest' # metadata latest para ultima version
   deploy-to-cluster:

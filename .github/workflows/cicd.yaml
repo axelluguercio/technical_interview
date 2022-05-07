@@ -1,7 +1,7 @@
 on:
   push:
-    branches: # Cuando se pushea a rama main ejecuta la action
-      - 'main'
+    paths:
+      - 'prueba3/index.html' # al pushear el archivo index.html 
 
 jobs:
   docker:

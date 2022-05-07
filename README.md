@@ -16,7 +16,7 @@ El diagrama de red muestra una arquitectura de cargas variable y alta disponibil
 
 ### **VPC**
 
-- ***10.0.1.0/20*** -> **IP** de la VPC.
+- ***10.0.1.0/20*** -> **red** de la VPC.
 
 - ***15*** -> **subredes diponibles**.
 

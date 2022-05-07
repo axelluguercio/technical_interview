@@ -22,7 +22,6 @@ jobs:
       -
         name: Build and push
         uses: docker/build-push-action@v3
-        run: 
         with:
           file: prueba3/Dockerfile
           context: ./prueba3

@@ -1,6 +1,6 @@
 # Introducción
 
-Solucion de la prueba tecnica para Craftech.io.
+Solución de la prueba tecnica para Craftech.io.
 
 ---
 
@@ -14,11 +14,11 @@ El diagrama de red muestra una arquitectura de cargas variable y alta disponibil
 
 ---
 
-### *VPC*
+### **VPC**
 
 - ***10.0.1.0/20*** -> **IP** de la VPC.
 
-- ***15*** -> *subredes diponibles*.
+- ***15*** -> **subredes diponibles**.
 
 - ***10.0.2.0/27 - 10.0.4.0/27*** -> para **subredes privadas** con 29 ip reservadas para cada una.
 
@@ -26,49 +26,49 @@ El diagrama de red muestra una arquitectura de cargas variable y alta disponibil
 
 ---
 
-### *Alta Disponibilidad*
+### **Alta Disponibilidad**
 
 > La **VPC** esta deployada en 3 zonas geograficas para ofrecer alta disponibilidad y que se puedan repartir las cargas de trabajo.
 
 ---
 
-### *Route 53*
+### **Route 53**
 
 > Ofrece un servicio administrado de **DNS** para que los usuarios puedan acceder a la applicación con un dominio sin tener que recordarse una ip.
 
 ---
 
-### *Application Load Balancer*
+### **Application Load Balancer**
 
-> Se encarga de  mejorar la carga que recibe la aplicación balanceando el trafico en las 3 zonas disponibles.
-
----
-
-### *Internet Gateway*
-
-> Brinda inbound/outbound hacia internet.
+> Para mejorar la **carga** que recibe la aplicación balanceando el trafico en las 3 zonas disponibles.
 
 ---
 
-### *NAT gateway*
+### **Internet Gateway**
 
-> El backend consume 2 servicios externos por lo que necesita acceder a internet, NAT gateway ofrece rutear el trafico desde las subredes privadas hacia internet de manera segura.
-
----
-
-### *ECS*
-
-> Proporciona servicio administrado y escalable de contenedores dentro estan deployado el frontend y el backend.
+> Brinda **inbound/outbound** hacia internet.
 
 ---
 
-### *RDS*
+### **NAT gateway**
 
-> Servicio administrado para la base de datos relacional, facilmente escalable.
+> El backend consume 2 servicios externos por lo que necesita acceder a internet, NAT gateway ofrece **rutear** el trafico desde las subredes privadas hacia internet de manera segura.
 
-### *DynamoBD*
+---
 
-> Para alojar la base de datos no relacional.
+### **ECS**
+
+> El frontend y el backend deployados en contenedores y con capacidad de **autoescalarse** mediante aumenta la carga o algun contenedor este caido. 
+
+---
+
+### **RDS**
+
+> Para base de datos **relacional**, facilmente escalable.
+
+### **DynamoBD**
+
+> Para alojar la base de datos **no relacional**.
 
 ---
 
@@ -76,7 +76,7 @@ El diagrama de red muestra una arquitectura de cargas variable y alta disponibil
 
 La aplicacíon consta de un backend en Django y un frontend en reactjs. Para la base de datos se utiliza PostgresSQL.
 
-Para compilar e desplegar la aplicación se necesita de **minikube** para cluster local o una instancia de kubernetes en cualquier cloud publica.
+Para compilar e desplegar la aplicación se necesita de **minikube** para cluster local o una instancia de **kubernetes** en cualquier cloud publica.
 
 - [Para instalar minikube](https://minikube.sigs.k8s.io/docs/start/)
 - [Kubernetes documention](https://kubernetes.io/es/)

@@ -10,7 +10,7 @@ Solución de la prueba tecnica para Craftech.io.
 
 ---
 
-El diagrama de red muestra una arquitectura de cargas variable y alta disponibilidad utilizando el servicio de **Elastic Container Service**, **RDS** y **DynamoBD** para base de datos relacional y no relacional respectivamente en **AWS**.
+El diagrama de red muestra una arquitectura de cargas variable y alta disponibilidad utilizando el servicio de contenedores de **ECS**, **RDS** y **DynamoBD** para base de datos relacional y no relacional respectivamente en **AWS**.
 
 ---
 
@@ -190,7 +190,8 @@ cat ~/.kube/config | base64
 
 #### El cicd.yaml consta de 2 jobs:
 
-- El job docker lo que hace es que cada vez que hago un push a la rama main regenera la imagen de nginx y lo sube a mi repositorio de DOCKER_HUB.
+- El job docker lo que hace es que cada vez que se hace un push del archivo prueba3/index.html regenera el build de la imagen de nginx y lo sube a mi repositorio de DOCKER_HUB como *latest*.
+
 ```
 jobs:
   docker:

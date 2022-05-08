@@ -1,0 +1,7 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: postgres-variables
+data:
+  POSTGRES_DB: predictiondb
+  INIT_DB: "--auth-host=scram-sha-256"

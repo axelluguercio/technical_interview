@@ -1,0 +1,32 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: react-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      component: react
+  template:
+    metadata:
+      labels:
+        component: react
+    spec:
+      containers:
+        - name: react-container
+          image: aluguercio/react-frontend:1.2 # pull de la imagen desde mi docker hub
+          ports:
+            - containerPort: 3000  
+          command: ["sh", "-c", "serve -c 0.0.0.0:3000"] # ejecuta el serve como entrypoint
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: react-service
+spec:
+  selector:
+    component: react
+  ports:
+  - protocol: TCP
+    port: 3000
+    targetPort: 3000

@@ -168,6 +168,8 @@ docker-compose up -vv .
 
 ```
 
+---
+
 ## Prueba 3
 
 Para CI/CD, deploye una imagen de nginx:latest y copie el index.html dentro del dir html.
